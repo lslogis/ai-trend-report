@@ -57,7 +57,23 @@ function refreshShell(){
   if(foot){delete foot.dataset.koHtml;foot.innerHTML='최신 회차: '+dm[1]+'년 '+dm[2]+'월 '+dm[3]+'일 '+(dm[4]==='morning'?'아침':'저녁')+' KST · AI 뉴스, 모델, 논문, 오픈소스의 변화 '+newCount+'건을 담았습니다. '+EDITIONS.length+'개 회차 '+all+'건을 보관 중입니다.'}
   const st=document.getElementById('search-status');
   if(st)st.textContent='전체 '+all+'개 항목';
+  buildEditionFilter();
 }
+let activeEdition='all';
+function editionShort(id){const m=id.match(/(\d{4})-(\d{2})-(\d{2})-(morning|evening)/);return m?m[1]+'.'+m[2]+'.'+m[3]+' '+(m[4]==='morning'?'아침':'저녁')+' KST':id}
+function buildEditionFilter(){
+  const sel=document.getElementById('edition-select');if(!sel)return;
+  const cur=sel.value||'all';
+  sel.innerHTML='';
+  const all=document.createElement('option');all.value='all';all.textContent='전체 회차';sel.appendChild(all);
+  EDITIONS.forEach(function(ed){
+    const n=ed.groups.reduce(function(a,g){return a+g.items.length},0);
+    const o=document.createElement('option');o.value=ed.id;o.textContent=editionShort(ed.id)+' ('+n+')';sel.appendChild(o);
+  });
+  sel.value=[...sel.options].some(function(o){return o.value===cur})?cur:'all';
+  activeEdition=sel.value;
+}
+document.getElementById('edition-select').addEventListener('change',function(e){activeEdition=e.target.value;applyFilters(true)});
 // ===== KO/EN language =====
 var LANG='ko';try{var _ls=localStorage.getItem('ai-report-lang');if(_ls==='en')LANG='en'}catch(e){}
 function setLangPersist(v){try{localStorage.setItem('ai-report-lang',v)}catch(e){}}
@@ -101,6 +117,10 @@ syncToggle();
 function syncToggle(){document.querySelectorAll('.lang-toggle button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===LANG))})}
 function setLang(v){if(v===LANG){syncToggle();return}LANG=v;setLangPersist(v);syncToggle();renderEditions();applyStaticLang();applyFilters(false)}
 function applyStaticLang(){
+  const edPick=document.querySelector('.edition-pick-label');
+  if(edPick){keepKo(edPick);edPick.textContent=LANG==='en'?'Edition':'회차'}
+  const edAll=document.querySelector('#edition-select option[value="all"]');
+  if(edAll){keepKo(edAll);edAll.textContent=LANG==='en'?'All editions':'전체 회차'}
 document.documentElement.lang=LANG;
 document.title=LANG==='en'?'AI Trend Report':'AI 트렌드 리포트';
 var h1=document.querySelector('.mast h1');
@@ -211,20 +231,26 @@ let activeFilter='all';
 function normalise(v){return String(v).trim().toLocaleLowerCase('ko-KR')}
 function applyFilters(shouldScroll){
   const query=normalise(searchInput.value);let visibleCount=0;
-  document.querySelectorAll('.section').forEach(function(section){
-    const categoryMatch=activeFilter==='all'||section.dataset.category===activeFilter;let sectionCount=0;
-    section.querySelectorAll('.card').forEach(function(item){
-      const queryMatch=!query||normalise(item.textContent).includes(query);
-      const visible=categoryMatch&&queryMatch;
-      item.classList.toggle('search-hidden',!visible);
-      if(visible){sectionCount++;visibleCount++}
+  document.querySelectorAll('.edition-block').forEach(function(edition){
+    const editionMatch=activeEdition==='all'||edition.id==='block-'+activeEdition;
+    let blockCount=0;
+    edition.querySelectorAll('.section').forEach(function(section){
+      const categoryMatch=activeFilter==='all'||section.dataset.category===activeFilter;let sectionCount=0;
+      section.querySelectorAll('.card').forEach(function(item){
+        const queryMatch=!query||normalise(item.textContent).includes(query);
+        const visible=categoryMatch&&queryMatch&&editionMatch;
+        item.classList.toggle('search-hidden',!visible);
+        if(visible){sectionCount++;blockCount++}
+      });
+      section.classList.toggle('hidden',sectionCount===0);
     });
-    section.classList.toggle('hidden',sectionCount===0);
+    edition.classList.toggle('search-hidden',!editionMatch||blockCount===0);
+    if(editionMatch)visibleCount+=blockCount;
   });
-  document.querySelectorAll('.edition-block').forEach(function(edition){edition.classList.toggle('search-hidden',!edition.querySelector('.section:not(.hidden)'))});
   clearButton.hidden=!query;
   const categoryLabel=document.querySelector('.legend button[aria-pressed="true"]').textContent.trim().replace(/\s+\d+$/,'');
-  searchStatus.textContent=query?(LANG==='en'?'“'+searchInput.value.trim()+'” — '+visibleCount+' results · '+categoryLabel:'“'+searchInput.value.trim()+'” 검색 결과 '+visibleCount+'개 · '+categoryLabel):(LANG==='en'?'All '+visibleCount+' items':'전체 '+visibleCount+'개 항목');
+  const edSuffix=activeEdition==='all'?'':' · '+editionShort(activeEdition);
+  searchStatus.textContent=query?(LANG==='en'?'“'+searchInput.value.trim()+'” — '+visibleCount+' results · '+categoryLabel+edSuffix:'“'+searchInput.value.trim()+'” 검색 결과 '+visibleCount+'개 · '+categoryLabel+edSuffix):(LANG==='en'?'All '+visibleCount+' items'+edSuffix:'전체 '+visibleCount+'개 항목'+edSuffix);
   emptyState.textContent=query?(LANG==='en'?'No results for “'+searchInput.value.trim()+'”.':'“'+searchInput.value.trim()+'” 검색 결과가 없습니다.'):(LANG==='en'?'No items in this category.':'선택한 카테고리에 항목이 없습니다.');
   emptyState.style.display=visibleCount?'none':'block';
   if(shouldScroll&&visibleCount){const first=document.querySelector('.section:not(.hidden)');if(first)first.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
@@ -237,6 +263,8 @@ function handleDeepLink(){
   var st=document.createElement('style');st.textContent='.card.flash{outline:3px solid var(--focus);outline-offset:5px}';document.head.appendChild(st);
   var h=(location.hash||'').replace('#','');if(!h)return;
   var el=document.getElementById(h);if(!el||!el.classList.contains('card'))return;
+  var blk=el.closest('.edition-block');
+  if(blk&&blk.id.indexOf('block-')===0){var eid=blk.id.slice(6);var sel=document.getElementById('edition-select');if(sel&&sel.querySelector('option[value="'+eid+'"]')){sel.value=eid;activeEdition=eid;applyFilters(false)}}
   setTimeout(function(){try{el.scrollIntoView({block:'center'})}catch(e){el.scrollIntoView()}el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},2800)},450);
 }
 async function main(){
