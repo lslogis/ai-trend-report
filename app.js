@@ -22,16 +22,17 @@ async function loadEditions(){
     return {id:e[0],kicker:e[1],date:e[2],label:e[3],small:e[4],window:e[5],groups:groups};
   });
 }
-function fmtBadgeDate(d){
+function badgeDate(d){
   d=String(d);
-  const i=d.indexOf('~');
-  if(i<0)return esc(d);
-  return '<span class="d-nowrap">'+esc(d.slice(0,i))+'</span> ~ <span class="d-nowrap">'+esc(d.slice(i+1))+'</span>';
+  const i=d.lastIndexOf('~');
+  let end=i<0?d.trim():d.slice(i+1).trim();
+  if(!/^\d{4}\./.test(end)){const y=(d.match(/^(\d{4})\./)||[])[1];if(y)end=y+'.'+end}
+  return end;
 }
 function editionBlockHtml(ed,count){
   return '<section class="edition-block" id="block-'+ed.id+'" aria-labelledby="edition-'+ed.id+'">'
     +'<div class="edition-head"><h2 class="edition-title" id="edition-'+ed.id+'">'
-    +'<span class="edition-date" data-kicker="'+esc(ed.kicker)+'">'+fmtBadgeDate(ed.date)+'</span>'
+    +'<span class="edition-date" data-kicker="'+esc(ed.kicker)+'"><span class="d-nowrap">'+esc(badgeDate(ed.date))+'</span></span>'
     +'<span class="edition-label">'+esc(ed.label)+'<small>'+esc(ed.small)+'</small></span></h2>'
     +'<p><span class="window">'+esc(ed.window)+' · 총 '+count+'개 신규 항목</span><br>'
     +'복사 버튼에서 텍스트 또는 카드 이미지를 고를 수 있고, 모바일에서는 바로 공유할 수 있어요.</p></div>'
