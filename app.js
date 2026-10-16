@@ -1,14 +1,26 @@
 let n=0;
 let EDITIONS=[];
+let SQLDB=null;
+function rows(sql){const r=SQLDB.exec(sql);return r.length?r[0].values:[]}
 async function loadEditions(){
-  const man=await (await fetch('editions/index.json')).json();
-  const out=await Promise.all(man.map(async function(m){
-    const r=await fetch('editions/'+m.id+'.json');
-    if(!r.ok) throw new Error('edition load failed: '+m.id);
-    return r.json();
-  }));
-  out.sort(function(a,b){return a.id<b.id?1:-1});
-  return out;
+  const SQL=await initSqlJs({locateFile:function(f){return f}});
+  const buf=await (await fetch('editions.db')).arrayBuffer();
+  if(!buf.byteLength) throw new Error('empty db');
+  SQLDB=new SQL.Database(new Uint8Array(buf));
+  const CATLBL={news:'\ud83d\udcf0 AI \ub274\uc2a4',models:'\ud83d\ude80 \ubaa8\ub378',papers:'\ud83d\udcc4 \ub17c\ubb38',open:'\ud83d\udcbb \uc624\ud508\uc18c\uc2a4·\uc2a4\ud0ac',data:'\ud83d\udcca \ub370\uc774\ud130\uc14b'};
+  const CATORD=['news','models','papers','open','data'];
+  return rows("SELECT id,kicker,date,label,small,window FROM editions ORDER BY substr(id,1,10) DESC, CASE WHEN id LIKE '%-evening' THEN 0 ELSE 1 END").map(function(e){
+    const groups=CATORD.map(function(k){
+      const items=rows("SELECT t,u,d,s,q,w,a,en,img FROM items WHERE edition_id='"+e[0].replace(/'/g,"''")+"' AND cat='"+k+"' ORDER BY id").map(function(r){
+        const it={t:r[0],u:r[1],d:r[2],s:r[3],q:JSON.parse(r[4]),w:r[5],a:JSON.parse(r[6])};
+        if(r[7])it.en=JSON.parse(r[7]);
+        if(r[8])it.img=r[8];
+        return it;
+      });
+      return {key:k,label:CATLBL[k],items:items};
+    });
+    return {id:e[0],kicker:e[1],date:e[2],label:e[3],small:e[4],window:e[5],groups:groups};
+  });
 }
 function editionBlockHtml(ed,count){
   return '<section class="edition-block" id="block-'+ed.id+'" aria-labelledby="edition-'+ed.id+'">'
