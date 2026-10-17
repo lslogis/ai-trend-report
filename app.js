@@ -131,7 +131,7 @@ function applyStaticLang(){
 document.documentElement.lang=LANG;
 document.title=LANG==='en'?'AI Trend Report':'AI 트렌드 리포트';
 var h1=document.querySelector('.mast h1');
-if(h1){keepKo(h1);h1.innerHTML=LANG==='en'?'<span class="title-line">AI Trend</span><span class="title-line report-word">Report</span>':h1.dataset.koHtml}
+if(h1){keepKo(h1);h1.innerHTML=LANG==='en'?'<span class="title-line">AI Trend</span> <span class="title-line report-word">Report</span>':h1.dataset.koHtml}
 var dek=document.querySelector('.mast .dek');
 if(dek){keepKoText(dek);dek.textContent=LANG==='en'?'Tech jargon aside — here is what happened in the AI world today, explained with everyday analogies. Jump straight to the original source.':dek.dataset.koText}
 var snap=document.querySelector('.snapshot span');
