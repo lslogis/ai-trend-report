@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 트렌드 리포트 2026.10.23 아침 리포트</title>
+<meta name="description" content="AI 뉴스·모델·논문·오픈소스를 일상 말로 풀어 원문 링크와 함께 모은 리포트.">
+<link rel="canonical" href="https://ai-trend-report.protocolgaia.com/e/2026-10-24-morning/">
+<style>
+:root{color-scheme:light;--paper:#f5f0e4;--card:#fbf6e9;--ink:#20201d;--muted:#5f5c54;--line:#20201d;--blue:#3c7794}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.75 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
+.wrap{width:min(880px,100%);margin:0 auto;padding:28px 16px 64px}
+a{color:inherit}nav.top{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:8px}
+nav.top a{text-decoration:none}nav.top a:hover{text-decoration:underline}
+h1{font-size:clamp(24px,4.4vw,36px);line-height:1.25;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:20px;margin:0 0 6px;line-height:1.4}
+.meta{color:var(--muted);font-size:14px;margin:0 0 20px}
+article.card{border:2.5px solid var(--line);border-radius:14px;background:var(--card);
+padding:20px 22px;margin:0 0 22px}
+article.card p{margin:6px 0}
+article.card .why{margin-top:10px}
+article.card .src{margin-top:12px;font-size:14px}
+.cat{display:inline-block;font-size:12px;font-weight:700;border:1.5px solid var(--line);
+border-radius:999px;padding:0 9px;margin-bottom:8px;background:var(--paper)}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="/">AI 트렌드 리포트</a><a href="https://protocolgaia.com/">Protocol Gaia</a></nav>
+<h1>AI 트렌드 리포트 — 아침 리포트 (2026.10.23)</h1>
+<p class="meta">수집 범위: 2026-10-23 12:00 ~ 2026-10-24 07:30 KST · 14건</p>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/535/">Claude가 123개 오픈소스 라이브러리를 &#x27;절대 안 터지게&#x27; 수학으로 증명</a></h2>
+<p class="meta">2026-10-22</p>
+<p>앤트로픽의 Frontier Red Team과 스타트업 Theorem이 Claude를 시켜 구글 OSS-Fuzz의 123개 오픈소스 라이브러리를 수학적으로 검증했어요.</p>
+<p>239개 테스트 진입점에 대해 &#x27;64MB 이하 어떤 입력이 와도 메모리 오류 없이 정상 종료된다&#x27;는 걸 컴퓨터가 한 줄씩 체크하는 증명으로 만들었어요. 증명문이 무려 약 1억 8천만 줄.</p>
+<p>증명을 쓰다 보니 무작위 입력 테스트(퍼징)가 수년간 못 찾은 버그 수백 개가 드러났고, Claude가 직접 고친 뒤 고친 코드도 다시 증명했어요.</p>
+<p class="why"><b>왜 중요한가:</b> 소프트웨어 검증이 &#x27;운 좋으면 버그를 잡는 낚시&#x27;에서 &#x27;절대 안 터진다는 보증서&#x27;로 바뀌고 있어요. 전문가가 20년 걸리던 일을 AI가 몇 주 만에 한 거예요.</p>
+<p class="src">출처: <a href="https://madrobot.blog/2026/10/22/anthropic-claude-formal-verification-proofs-oss-fuzz-theorem-rocq/" rel="noopener">Anthropic Frontier Red Team · madrobot</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/536/">중국 해킹조직, AI 침투테스트 프레임워크 ARTEX로 MS365 2,250개 테넌트 공격</a></h2>
+<p class="meta">2026-10-21</p>
+<p>마이크로소프트가 중국 연계 해킹조직 Storm-0940의 ConnectWise 공급망 공격을 공개했어요.</p>
+<p>공격자들은 Go로 만든 AI 침투테스트 프레임워크 ARTEX로 스캔·비밀번호 대입·OAuth 남용을 기계 속도로 자동화했어요.</p>
+<p>2,250개 MS365 테넌트를 노렸고 분당 2,900회 로그인 시도. 일부 공격은 3시간도 안 돼 관리자 권한을 뺏겼어요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 해킹 도구가 &#x27;해커의 보조 바퀴&#x27;에서 &#x27;해커의 분신&#x27;이 됐어요. 이제 공격은 사람 손이 아니라 기계 속도로 벌어집니다.</p>
+<p class="src">출처: <a href="https://thehackernews.com/2026/10/china-linked-hackers-use-artex-ai.html" rel="noopener">Microsoft Threat Intelligence · The Hacker News</a></p>
+</article>
+<article class="card">
+<span class="cat">open</span>
+<h2><a href="/c/537/">Claude Code 2.1.309 — 샌드박스 탈출 구멍 막은 보안 패치</a></h2>
+<p class="meta">2026-10-22</p>
+<p>Claude Code 2.1.309가 나왔어요. 이번엔 보안·권한 수정이 중심이에요.</p>
+<p>macOS와 Linux에서 샌드박스 속 Bash 명령이 셸 시작 파일을 샌드박스 밖에서 실행하던 실제 탈출 구멍을 막았어요.</p>
+<p>샌드박스 명령이 MCP 설정 파일을 몰래 수정할 수 있던 문제 등 권한 체크 구멍들도 함께 고쳤어요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 코딩 도구는 이제 &#x27;편리한 비서&#x27;가 아니라 &#x27;서버 열쇠를 든 비서&#x27;예요. 샌드박스 구멍 하나가 그대로 회사 전체 털림으로 이어집니다.</p>
+<p class="src">출처: <a href="https://www.gradually.ai/en/changelogs/claude-code/" rel="noopener">Anthropic Claude Code changelog</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/538/">구글 딥마인드, 영상만 보고 로봇에게 코닝홀 가르쳤다 — 7연속 성공</a></h2>
+<p class="meta">2026-10-22</p>
+<p>Gemini 4 Argon이 사람이 코닝홀(콩주머니 던지기) 하는 영상을 보고 그 과제를 배웠어요.</p>
+<p>영상에서 환경을 분석하고 공간 좌표를 계산한 뒤, 관절 움직임을 담은 시뮬레이션 코드를 스스로 짰어요.</p>
+<p>그걸 Apptronik의 휴머노이드 로봇 Apollo에 옮겼더니 실물 실험에서 7연속 던지기 성공.</p>
+<p class="why"><b>왜 중요한가:</b> 로봇 교육이 &#x27;몇 주짜리 수작업&#x27;에서 &#x27;유튜브 영상 한 편&#x27;으로 바뀌고 있어요. 영상이 곧 로봇의 교과서가 되는 시대예요.</p>
+<p class="src">출처: <a href="https://menafn.com/1111853854/Google-Deepmind-Teaches-Apptronik-Humanoid-New-Skills-From-Video" rel="noopener">Google DeepMind · MENAFN</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/539/">deepset, 정부·방산용 &#x27;주권형 AI 에이전트&#x27; 최적화와 커스텀 모델 서비스 발표</a></h2>
+<p class="meta">2026-10-21</p>
+<p>AI 에이전트 프레임워크 Haystack을 만드는 deepset이 NVIDIA GTC Berlin에서 새 소식을 발표했어요.</p>
+<p>에이전트 운영 비용을 낮추는 &#x27;에이전트 최적화&#x27;와 정부·방산·산업용 커스텀 AI 모델 서비스를 내놨어요.</p>
+<p>인터넷이 차단된(에어갭) 환경에서 스스로 개선되는 AI 에이전트용 레퍼런스 아키텍처도 공개했어요.</p>
+<p class="why"><b>왜 중요한가:</b> AI의 다음 경쟁은 &#x27;더 똑똑한 모델&#x27;이 아니라 &#x27;내 땅에서 돌아가는 모델&#x27;이에요. 소버린 AI가 유럽 공공부문부터 현실이 되고 있습니다.</p>
+<p class="src">출처: <a href="https://www.deepset.ai/news" rel="noopener">deepset</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/540/">딥마인드 연구원 2명, 펜타곤·님버스 AI 계약 반대하며 사임</a></h2>
+<p class="meta">2026-10-21</p>
+<p>딥마인드 연구 엔지니어 Sofia Liguori와 AI 연구자 Andreas Kirsch가 회사를 떠났어요.</p>
+<p>이유는 구글의 미 국방부 기밀 AI 계약과 이스라엘 님버스 프로젝트. Liguori는 &#x27;우리 기술이 사회에 순수익이 될 거라 더 이상 믿지 않는다&#x27;고 했어요.</p>
+<p>Kirsch의 지적은 더 날카로워요. 기밀 인프라에 통합된 뒤엔 펜타곤이 AI를 어떻게 쓰는지 구글이 사실상 통제·감사할 수 없다는 거예요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 연구자들의 고민이 &#x27;언젠가 올 위험&#x27;에서 &#x27;지금 당장 내 손으로 만들어지는 무기&#x27;로 옮겨왔어요. 인재 유출이 곧 회사의 양심 지표가 되는 시대예요.</p>
+<p class="src">출처: <a href="https://www.gadgetreview.com/google-deepmind-staff-resign-over-military-ai-contracts" rel="noopener">BBC · The Intercept</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/541/">마이크론 대만 노조, 파업 뒤 성과급 제안 거부 — &#x27;투쟁은 끝나지 않았다&#x27;</a></h2>
+<p class="meta">2026-10-23</p>
+<p>마이크론 대만 타오위안 공장의 노조가 24시간 파업 뒤 회사의 새 성과급안을 거부했어요. 조합원 70%가 반대.</p>
+<p>AI 데이터센터용 메모리 수요 폭증으로 회사 실적은 사상 최대인데, 노동자들은 그 몫을 달라고 해요.</p>
+<p>타이중 공장 노조와는 합의했지만 타오위안은 결렬됐고, 추가 파업도 예고됐어요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 붐의 돈이 &#x27;칩&#x27;에는 가고 &#x27;사람&#x27;에게는 안 가는 게 드러나는 순간이에요. 반도체 공급망의 다음 병목은 공장이 아니라 사람일 수 있어요.</p>
+<p class="src">출처: <a href="https://www.straitstimes.com/asia/east-asia/taiwan-union-says-micron-workers-reject-bonus-proposal" rel="noopener">Straits Times · AFP</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/542/">AI 주식 세계적 매도세 — 데이터센터 빚 부담에 나스닥 2.6%↓</a></h2>
+<p class="meta">2026-10-23</p>
+<p>10월 22일 AI 관련주가 크게 떨어졌어요. 나스닥 -2.6%, S&amp;P500 -1.2%로 7월 이후 최악의 날이었어요.</p>
+<p>CoreWeave -10.1%, Meta -7%, Nvidia -4.4%. 데이터센터와 칩에 쏟아붓는 빚이 너무 커졌다는 걱정이 번졌어요.</p>
+<p>AI가 돈을 버는 건 맞는데, 버는 속도보다 빚지는 속도가 빠르다는 게 시장의 불안이에요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 열풍의 두 번째 장이 시작됐어요. 질문이 &#x27;얼마나 똑똑한가&#x27;에서 &#x27;이 빚을 갚을 수 있는가&#x27;로 바뀐 거예요.</p>
+<p class="src">출처: <a href="https://ai-news-brief.com/" rel="noopener">AI News Brief · AP</a></p>
+</article>
+<article class="card">
+<span class="cat">papers</span>
+<h2><a href="/c/543/">AI가 답을 찾을 때 &#x27;여러 개 생각&#x27;을 효율적으로 가지치기하는 법</a></h2>
+<p class="meta">2026-10-22</p>
+<p>추론형 AI는 답을 하나만 내지 않고 여러 후보를 병렬로 돌려요. 근데 이게 전기세를 엄청 먹어요.</p>
+<p>이 논문은 &#x27;품질이 좋고 서로 다양한&#x27; 후보만 남기는 가지치기 최적화 기법을 제안해요.</p>
+<p>8개 오픈 모델에서 기존 방식보다 좋은 품질-비용 균형을 냈대요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 추론 비용은 이제 &#x27;모델 값&#x27;이 아니라 &#x27;생각 전기세&#x27;예요. 생각하는 방식을 다이어트하는 연구가 곧 AI 요금 인하로 이어집니다.</p>
+<p class="src">출처: <a href="https://arxiv.org/abs/2610.31667" rel="noopener">arXiv</a></p>
+</article>
+<article class="card">
+<span class="cat">papers</span>
+<h2><a href="/c/544/">AI가 AI 학습데이터를 감사 — 웹 코퍼스 속 140만 건 &#x27;콘텐츠 팜&#x27; 적발</a></h2>
+<p class="meta">2026-10-22</p>
+<p>AI 학습용 웹 데이터(FineWeb2)에 몰래 섞인 140만 건짜리 기계 생성 &#x27;콘텐츠 팜&#x27;이 있었어요.</p>
+<p>이걸 LLM 에이전트 감사관이 찾아냈어요. 비용은 고작 3달러.</p>
+<p>AI가 AI의 밥(학습 데이터)을 검수하는 시대가 온 거예요.</p>
+<p class="why"><b>왜 중요한가:</b> AI가 먹는 밥에 독이 섞여 있으면 AI도 독이 돼요. 데이터 검수가 AI 안전의 &#x27;첫 번째 관문&#x27;인 이유예요.</p>
+<p class="src">출처: <a href="https://arxiv.org/abs/2610.31636" rel="noopener">arXiv</a></p>
+</article>
+<article class="card">
+<span class="cat">papers</span>
+<h2><a href="/c/545/">WeVisOne-VL: &#x27;대충 보는&#x27; 비전 AI가 &#x27;정밀 측량&#x27; 수준으로</a></h2>
+<p class="meta">2026-10-22</p>
+<p>WeChat Vision 팀이 물체 탐지·OCR·세그멘테이션을 하나로 합친 비전 모델 WeVisOne-VL을 냈어요.</p>
+<p>30개 이상 벤치마크에서 선두권. 문서 읽기, 물체 찾기, 영역 나누기를 한 모델이 다 해요.</p>
+<p>Hugging Face Papers 트렌딩에 올라 주목받고 있어요.</p>
+<p class="why"><b>왜 중요한가:</b> 비전 AI가 &#x27;이 사진에 고양이가 있어요&#x27; 수준에서 &#x27;이 문서 3번째 줄 숫자를 읽고 박스를 그려요&#x27; 수준으로 진화 중이에요.</p>
+<p class="src">출처: <a href="https://huggingface.co/papers/2610.31329" rel="noopener">Hugging Face Papers 트렌딩</a></p>
+</article>
+<article class="card">
+<span class="cat">papers</span>
+<h2><a href="/c/546/">영화급 AI 영상, 이제 &#x27;장면·인물·카메라&#x27;를 따로 조종한다</a></h2>
+<p class="meta">2026-10-22</p>
+<p>AI 영상 생성의 새 학습법 FAPL이 나왔어요.</p>
+<p>캐릭터·장면·카메라 움직임을 요소별로 따로 예측하고 조종할 수 있게 해요.</p>
+<p>&#x27;인물은 그대로 두고 카메라만 돌려줘&#x27; 같은 지시가 가능해지는 기반 기술이에요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 영상은 &#x27;복권 긁기&#x27;에서 &#x27;리모컨 조작&#x27;으로 바뀌고 있어요. 마음대로 주무를 수 있어야 진짜 제작 도구가 됩니다.</p>
+<p class="src">출처: <a href="https://huggingface.co/papers/2610.30926" rel="noopener">Hugging Face Papers 트렌딩</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/547/">앤트로픽, 이달 말 S-1 공개·11월 9일 로드쇼 — 상장 막바지 돌입</a></h2>
+<p class="meta">2026-10-23</p>
+<p>앤트로픽이 이달 말 증권신고서(S-1)를 공개하고 11월 9일 로드쇼를 시작해요. 내달 중순 IPO가 목표예요.</p>
+<p>&#x27;미국 올해 신규상장 중 앤트로픽만 남았다&#x27;는 평가가 나올 정도로 최대어예요.</p>
+<p>앞선 회차에서 다룬 상반기 매출 163억 달러·순손실 807억 달러에 이은 새로운 후속 보도예요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 랩의 돈줄이 &#x27;투자 유치&#x27;에서 &#x27;주식 시장&#x27;으로 옮겨가고 있어요. 앤트로픽 IPO는 AI 업계 전체의 몸값을 가늠하는 시험대가 됩니다.</p>
+<p class="src">출처: <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1008811289" rel="noopener">SBS · 로이터</a></p>
+</article>
+<article class="card">
+<span class="cat">news</span>
+<h2><a href="/c/548/">딥시크, 텐센트·CATL 주도로 1000억 위안(약 20조원) 투자 유치</a></h2>
+<p class="meta">2026-10-22</p>
+<p>딥시크가 텐센트와 CATL 주도로 1000억 위안, 우리 돈 약 20조원을 조달했어요.</p>
+<p>기업가치는 약 750억 달러로 평가받았어요. 중국 역대 최대급 투자예요.</p>
+<p>미국 빅테크와 중국 AI 사이의 자금 격차가 빠르게 좁혀지고 있어요.</p>
+<p class="why"><b>왜 중요한가:</b> AI 경쟁이 &#x27;누가 더 똑똑한가&#x27;에서 &#x27;누가 더 오래 버틸 돈이 있는가&#x27;로 바뀌고 있어요. 20조원은 그 전쟁의 포탄이에요.</p>
+<p class="src">출처: <a href="https://www.asiae.co.kr/article/2026102215315336838" rel="noopener">아시아경제</a></p>
+</article>
+<footer>AI 트렌드 리포트 · <a href="/">홈</a> · <a href="https://protocolgaia.com/about/">소개</a> · <a href="https://protocolgaia.com/privacy/">개인정보처리방침</a></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거대 n-gram 표를 4비트로 다이어트 — 메모리 75% 절감</title>
+<meta name="description" content="최근 오픈 모델들이 성능 향상용으로 쓰는 n-gram 임베딩 테이블(DeepSeek-V4.1-Flash는 Engram에 1960억 파라미터 할당)의 메모리 비용을 4비트 양자화로 75% 절감하는 기법을 제안했다.">
+<link rel="canonical" href="https://ai-trend-report.protocolgaia.com/c/528/">
+<style>
+:root{color-scheme:light;--paper:#f5f0e4;--card:#fbf6e9;--ink:#20201d;--muted:#5f5c54;--line:#20201d;--blue:#3c7794}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.75 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
+.wrap{width:min(880px,100%);margin:0 auto;padding:28px 16px 64px}
+a{color:inherit}nav.top{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:8px}
+nav.top a{text-decoration:none}nav.top a:hover{text-decoration:underline}
+h1{font-size:clamp(24px,4.4vw,36px);line-height:1.25;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:20px;margin:0 0 6px;line-height:1.4}
+.meta{color:var(--muted);font-size:14px;margin:0 0 20px}
+article.card{border:2.5px solid var(--line);border-radius:14px;background:var(--card);
+padding:20px 22px;margin:0 0 22px}
+article.card p{margin:6px 0}
+article.card .why{margin-top:10px}
+article.card .src{margin-top:12px;font-size:14px}
+.cat{display:inline-block;font-size:12px;font-weight:700;border:1.5px solid var(--line);
+border-radius:999px;padding:0 9px;margin-bottom:8px;background:var(--paper)}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="/">AI 트렌드 리포트</a><a href="https://protocolgaia.com/">Protocol Gaia</a></nav>
+<article class="card">
+<span class="cat">papers</span>
+<h2>거대 n-gram 표를 4비트로 다이어트 — 메모리 75% 절감</h2>
+<p class="meta">2026-10-22</p>
+<p>최근 오픈 모델들이 성능 향상용으로 쓰는 n-gram 임베딩 테이블(DeepSeek-V4.1-Flash는 Engram에 1960억 파라미터 할당)의 메모리 비용을 4비트 양자화로 75% 절감하는 기법을 제안했다.</p>
+<p>검증 손실 개선분의 99% 이상을 유지하면서 테이블 메모리를 줄였다.</p>
+<p>DeepSeek-V4.1-Flash와 Qwen3.8-Flash-Next 실측에서도 테이블 메모리 47~55% 절감, perplexity 증가 1.2% 미만, 다운스트림 성능은 대체로 유지됐다.</p>
+<p class="why"><b>왜 중요한가:</b> 백과사전 전집을 포켓북으로 줄였는데 내용이 거의 그대로인 것과 같다. 큰 모델을 &#x27;가볍게&#x27; 만드는 지름길이 하나 더 늘었다.</p>
+<p class="src">출처: <a href="https://arxiv.org/abs/2610.31646" rel="noopener">arXiv (cs.CL)</a></p>
+</article>
+<p><a href="/e/2026-10-23-evening/">이 회차 전체 보기</a></p>
+<footer>AI 트렌드 리포트 · <a href="/">홈</a> · <a href="https://protocolgaia.com/about/">소개</a> · <a href="https://protocolgaia.com/privacy/">개인정보처리방침</a></footer>
+</div>
+</body>
+</html>

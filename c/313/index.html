@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>토큰마다 일 잘하는 모델에게 일을 나눠주기 — TokenRouter</title>
+<meta name="description" content="LLM 여러 개를 섞어 쓰는 &#x27;라우팅&#x27;은 보통 질문 단위로 나눴는데, 이건 글자(토큰) 단위로 나눠주는 서빙 시스템을 만들었어요.">
+<link rel="canonical" href="https://ai-trend-report.protocolgaia.com/c/313/">
+<style>
+:root{color-scheme:light;--paper:#f5f0e4;--card:#fbf6e9;--ink:#20201d;--muted:#5f5c54;--line:#20201d;--blue:#3c7794}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.75 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
+.wrap{width:min(880px,100%);margin:0 auto;padding:28px 16px 64px}
+a{color:inherit}nav.top{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:8px}
+nav.top a{text-decoration:none}nav.top a:hover{text-decoration:underline}
+h1{font-size:clamp(24px,4.4vw,36px);line-height:1.25;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:20px;margin:0 0 6px;line-height:1.4}
+.meta{color:var(--muted);font-size:14px;margin:0 0 20px}
+article.card{border:2.5px solid var(--line);border-radius:14px;background:var(--card);
+padding:20px 22px;margin:0 0 22px}
+article.card p{margin:6px 0}
+article.card .why{margin-top:10px}
+article.card .src{margin-top:12px;font-size:14px}
+.cat{display:inline-block;font-size:12px;font-weight:700;border:1.5px solid var(--line);
+border-radius:999px;padding:0 9px;margin-bottom:8px;background:var(--paper)}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="/">AI 트렌드 리포트</a><a href="https://protocolgaia.com/">Protocol Gaia</a></nav>
+<article class="card">
+<span class="cat">papers</span>
+<h2>토큰마다 일 잘하는 모델에게 일을 나눠주기 — TokenRouter</h2>
+<p class="meta">2026-10-08</p>
+<p>LLM 여러 개를 섞어 쓰는 &#x27;라우팅&#x27;은 보통 질문 단위로 나눴는데, 이건 글자(토큰) 단위로 나눠주는 서빙 시스템을 만들었어요.</p>
+<p>토큰 단위로 나누면 속도·품질이 좋아지지만, 기존 서버는 속도가 엇박자가 나서 버벅였어요.</p>
+<p>새 시스템은 요청 기준으로 프로그래밍하고 실행은 모델별로 나눠 처리해서, 기존보다 2배~64배 빠른 디코딩 속도를 냈어요.</p>
+<p class="why"><b>왜 중요한가:</b> &quot;AI 서비스 요금의 핵심은 &#x27;토큰 처리 속도&#x27;인데, 인프라를 바꾸는 것만으로 최대 수십 배 효율이 올라가요.&quot;</p>
+<p class="src">출처: <a href="https://arxiv.org/abs/2610.12242" rel="noopener">arXiv cs.CL</a></p>
+</article>
+<p><a href="/e/2026-10-09-evening/">이 회차 전체 보기</a></p>
+<footer>AI 트렌드 리포트 · <a href="/">홈</a> · <a href="https://protocolgaia.com/about/">소개</a> · <a href="https://protocolgaia.com/privacy/">개인정보처리방침</a></footer>
+</div>
+</body>
+</html>

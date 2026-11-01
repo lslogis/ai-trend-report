@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 2.1.293/294 — Haiku 5.5 기본 지원, 후크 안전성 수정</title>
+<meta name="description" content="Claude Code 2.1.293에서 claude-haiku-5-5가 기본 Haiku 모델이 됐어요. 100만 토큰 컨텍스트에 입력 $0.10/출력 $0.50 per 100만 토큰이에요.">
+<link rel="canonical" href="https://ai-trend-report.protocolgaia.com/c/217/">
+<style>
+:root{color-scheme:light;--paper:#f5f0e4;--card:#fbf6e9;--ink:#20201d;--muted:#5f5c54;--line:#20201d;--blue:#3c7794}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);
+font:16px/1.75 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
+.wrap{width:min(880px,100%);margin:0 auto;padding:28px 16px 64px}
+a{color:inherit}nav.top{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:8px}
+nav.top a{text-decoration:none}nav.top a:hover{text-decoration:underline}
+h1{font-size:clamp(24px,4.4vw,36px);line-height:1.25;letter-spacing:-.02em;margin:14px 0 8px}
+h2{font-size:20px;margin:0 0 6px;line-height:1.4}
+.meta{color:var(--muted);font-size:14px;margin:0 0 20px}
+article.card{border:2.5px solid var(--line);border-radius:14px;background:var(--card);
+padding:20px 22px;margin:0 0 22px}
+article.card p{margin:6px 0}
+article.card .why{margin-top:10px}
+article.card .src{margin-top:12px;font-size:14px}
+.cat{display:inline-block;font-size:12px;font-weight:700;border:1.5px solid var(--line);
+border-radius:999px;padding:0 9px;margin-bottom:8px;background:var(--paper)}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--line);color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="top"><a href="/">AI 트렌드 리포트</a><a href="https://protocolgaia.com/">Protocol Gaia</a></nav>
+<article class="card">
+<span class="cat">open</span>
+<h2>Claude Code 2.1.293/294 — Haiku 5.5 기본 지원, 후크 안전성 수정</h2>
+<p class="meta">2026-10-08</p>
+<p>Claude Code 2.1.293에서 claude-haiku-5-5가 기본 Haiku 모델이 됐어요. 100만 토큰 컨텍스트에 입력 $0.10/출력 $0.50 per 100만 토큰이에요.</p>
+<p>2.1.294는 보안 수정이에요: 자연어 프롬프트 후크(&#x27;…차단하라&#x27; 식 지시)가 막아야 할 동작을 통과시키는 문제를 고쳤어요. 지시형 후크를 가드레일로 쓰는 사용자는 즉시 업데이트가 권장돼요.</p>
+<p>그 밖에 HTTP MCP 메모리 누수·백그라운드 세션 메시지 손실 같은 잔버그도 고쳤어요.</p>
+<p class="why"><b>왜 중요한가:</b> &#x27;하지 마&#x27;라고 써 붙인 표지판이 오히려 문을 열어주던 버그예요. AI 도구의 안전장치도 사람이 만든 거라 구멍이 날 수 있죠.</p>
+<p class="src">출처: <a href="https://oday-bakkour.com/blog/claude-haiku-5-5-copilot-local-sandboxing-ga-october-8-2026" rel="noopener">커뮤니티 체인지로그 정리</a></p>
+</article>
+<p><a href="/e/2026-10-11-evening/">이 회차 전체 보기</a></p>
+<footer>AI 트렌드 리포트 · <a href="/">홈</a> · <a href="https://protocolgaia.com/about/">소개</a> · <a href="https://protocolgaia.com/privacy/">개인정보처리방침</a></footer>
+</div>
+</body>
+</html>
